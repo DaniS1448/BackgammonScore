@@ -48,7 +48,7 @@ function addPartido(){
 				var fecha=isoDateTime.toString("yyyyMMddHHmmss").replace(/T/, ' ').replace(/\..+/, '');
 				var puntos = tipo.options[tipo.selectedIndex].text.split(" (")[1].split('')[0]+'p';
 				
-				var nuevoTr='<tr role="row" class="odd">'+j1+''+j2+'<td class="text-nowrap">'+opcionTipo+'</td><td class="text-nowrap sorting_1">'+fecha+'</td><td>'+puntos+'</td></tr>';
+				var nuevoTr='<tr role="row" class="odd">'+j1+''+j2+'<td class="text-nowrap">'+opcionTipo+'</td><td class="text-nowrap sorting_1">'+fecha+'</td><td>'+puntos+'</td><td><i class="fas fa-trash-alt"></i></td></tr>';
 				$("#tablaPuntos").find("tbody").prepend(nuevoTr);
 			} else {
 				mostrarModalError("warning", respuesta.mensaje);
@@ -152,6 +152,7 @@ function mostrarModalError(tipo = "warning", mensaje="No hay mensajes", volver="
         			<th scope="col">Tipo</th>
         			<th scope="col">Fecha</th>
         			<th scope="col">Puntos</th>
+        			<th scope="col">Ac.</th>
         		</tr>
     		</thead>
     		<tbody>
@@ -182,6 +183,11 @@ function mostrarModalError(tipo = "warning", mensaje="No hay mensajes", volver="
 				        echo "2p";
 				    }
 				?></td>
+				<td>
+					<a href='partido/delete?idPartido=<?= $partido->id; ?>' title='Eliminar Partido' data-toggle='tooltip'>
+                    	<i class="fas fa-trash-alt"></i>
+                    </a>
+				</td>
 			</tr>
 		<?php endforeach;?>
 		</tbody>

@@ -12,6 +12,7 @@
    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
       <ul class="navbar-nav mr-auto">
          <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>">Home</a></li>
+         <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>home/stats">Stats</a></li>
          <?php if(isset($_SESSION['user'])):?>
          <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>user">User</a></li>
          <?php endif;?>

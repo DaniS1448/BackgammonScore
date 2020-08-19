@@ -16,6 +16,11 @@ class Partido_model extends CI_Model{
         R::store($partido);
     }
     
+    public function d($id) {
+        $partido = R::load('partido',$id);
+        R::trash($partido);
+    }
+    
     public function getPartidos(){
         return R::findAll('partido');
     }
@@ -48,6 +53,18 @@ class Partido_model extends CI_Model{
             [':jugador1_id' => $idUser,':jugador2_id' => $idUser]
             );
         return R::convertToBeans( 'partido', $rows );
+    }
+    
+    public function top($tipo, $limite){
+        $resultado = R::getAll("select user.username AS ganador, COUNT(partido.ganador_id) as puntos from partido inner join user on partido.ganador_id = user.id where tipo = $tipo group by ganador_id ORDER by puntos DESC LIMIT $limite");
+        //return R::convertToBeans( 'toplinie', $resultado );
+        return $resultado;
+    }
+    
+    public function topDuel($tipo, $idj1, $idj2){
+        $resultado = R::getAll("select user.username AS ganador, COUNT(partido.ganador_id) as puntos from partido inner join user on partido.ganador_id = user.id where tipo = $tipo AND ((jugador1_id = $idj1 AND jugador2_id = $idj2) OR (jugador1_id = $idj2 AND jugador2_id = $idj1) )group by ganador_id ORDER by puntos DESC");
+        //return R::convertToBeans( 'toplinie', $resultado );
+        return $resultado;
     }
 }
 ?>

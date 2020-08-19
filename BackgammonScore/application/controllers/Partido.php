@@ -53,5 +53,17 @@ class Partido extends CI_Controller{
         }
     }
     
+    public function delete(){
+        session_start_seguro();
+        verificarLogin();
+        $idPartido=isset($_GET['idPartido'])?$_GET['idPartido']:null;
+        if($idPartido != null){
+            $this->load->model('partido_model');
+            $this->partido_model->d($idPartido);
+        }
+        
+        redirect(base_url() . 'user');
+    }
+    
 }
 ?>

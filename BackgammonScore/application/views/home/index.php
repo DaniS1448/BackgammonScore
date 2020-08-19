@@ -1,6 +1,77 @@
 <div class="container mt-5">
 		<br>
-		<h4 class="text-uppercase text-center">Todos los partidos</h4>
+		<div class="container">
+		
+			<div class="d-flex justify-content-center mb-4">
+    			<form action="<?php echo base_url(); ?>home/duel" method="get">
+        		<div class="form-row">
+        			<div class="form-group col-auto">
+                		<select class="form-control" id="oponente" name="jugador1" onchange="actGanador();">
+                			<?php foreach ($users as $user):?>
+                				<option value="<?= $user->id ?>"><?= $user->username ?></option>
+                			<?php endforeach;?>
+                		</select>
+        			</div>
+        			
+        			<div class="form-group col-auto">
+        				<button type="submit" class="btn btn-primary">Duel</button>
+        			</div>
+        			
+        			<div class="form-group col-auto">
+                		<select class="form-control" id="ganador" name="jugador2">
+                			<?php foreach ($users as $user):?>
+                				<option value="<?= $user->id ?>"><?= $user->username ?></option>
+                			<?php endforeach;?>
+                		</select>
+        			</div>
+        			
+        		</div>
+        		</form>
+    		</div>
+		
+			<div class="row d-fex justify-content-center">
+				<div class="col-12 table-responsive">
+					<h3 class="text-center bg-dark text-white m-0 p-2">Top Players</h3>
+					<table class="table table-sm table-dark table-striped" id="toplinie">
+                		<thead>
+                    		<tr>
+                    			<th scope="col">#</th>
+                    			<th scope="col">Jugador</th>
+                    			<th scope="col">Puntos</th>
+                    			<th scope="col">Partidos</th>
+                    			<th scope="col">Ganados</th>
+                    			<th scope="col" class="text-success">G/P</th>
+                    			<th scope="col" class="text-warning">L/P</th>
+                    			<th scope="col" class="text-secondary">LT/P</th>
+                    			<th scope="col" class="text-info">M/P</th>
+                    			<th scope="col" class="text-primary">MT/P</th>
+                    		</tr>
+                		</thead>
+                		<tbody>
+                			<?php foreach ($usuarios as $usuario):?>
+                				<tr>
+                					<td><?= $ntop++ ?></td>
+                					<td><?= $usuario['nombre']?></td>
+									<td><?= $usuario['puntos'] ?></td>
+									<td><?= $usuario['partidos'] ?></td>
+									<td><?= $usuario['ganados'] ?></td>
+									<td class="text-success"><?= $usuario['gp'] ?>%</td>
+									<td class="text-warning"><?= $usuario['l'] ?>%</td>
+									<td class="text-secondary"><?= $usuario['lt'] ?>%</td>
+									<td class="text-info"><?= $usuario['m'] ?>%</td>
+									<td class="text-primary"><?= $usuario['mt'] ?>%</td>
+                				</tr>
+                			<?php endforeach;?>
+                		</tbody>
+            		</table>
+				</div>
+			
+			</div>
+		</div>
+		
+
+		
+		<h4 class="text-uppercase text-center mt-4">Todos los partidos</h4>
 		<div class="table-responsive">
 		<table class="table table-sm stripe" id="tablaPuntos">
     		<thead>
