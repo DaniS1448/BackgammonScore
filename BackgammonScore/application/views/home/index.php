@@ -31,8 +31,8 @@
 		
 			<div class="row d-fex justify-content-center">
 				<div class="col-12 table-responsive">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Top Players</h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Top Players</h3>
+					<table class="table table-sm table-dark table-striped rounded" id="toplinie">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>

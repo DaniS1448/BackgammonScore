@@ -3,8 +3,8 @@
 		<div class="container">
 			<div class="row d-fex justify-content-center">
 				<div class="col-12 table-responsive">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Duel <span class="text-danger"><?= $topusuarios[0]['nombre'] ?></span> VS <span class="text-danger"><?= $topusuarios[1]['nombre'] ?></span></h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Duel <span class="text-danger"><?= $topusuarios[0]['nombre'] ?></span> VS <span class="text-danger"><?= $topusuarios[1]['nombre'] ?></span></h3>
+					<table class="table table-sm table-dark table-striped rounded" id="toplinie">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>
@@ -48,8 +48,8 @@
 			
 			
 				<div class="col-auto">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Linie</h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Linie</h3>
+					<table class="table table-sm table-dark table-striped rounded" id="toplinie">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>
@@ -71,8 +71,8 @@
             		</table>
 				</div>
 				<div class="col-auto">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Linie Tehnica</h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Linie Tehnica</h3>
+					<table class="table table-sm table-dark table-striped rounded" id="toplinietehnica">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>
@@ -94,8 +94,8 @@
             		</table>
 				</div>
 				<div class="col-auto">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Marti</h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Marti</h3>
+					<table class="table table-sm table-dark table-striped rounded" id="topmarti">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>
@@ -117,8 +117,8 @@
             		</table>
 				</div>
 				<div class="col-auto">
-					<h3 class="text-center bg-dark text-white m-0 p-2">Marti Tehnic</h3>
-					<table class="table table-sm table-dark table-striped" id="toplinie">
+					<h3 class="text-center bg-dark text-white m-0 p-2 rounded">Marti Tehnic</h3>
+					<table class="table table-sm table-dark table-striped rounded" id="topmartitehnic">
                 		<thead>
                     		<tr>
                     			<th scope="col">#</th>
