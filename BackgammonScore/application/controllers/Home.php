@@ -271,5 +271,17 @@ class Home extends CI_Controller{
             redirect(base_url());
         }
     }
+    
+    public function test(){
+        session_start_seguro();
+        $this->load->model('partido_model');
+        $lastDay = $this->partido_model->getLastDay()['date'];
+        $lastDayPartes = explode(" ", $lastDay);
+        
+        echo "<pre>";
+        echo $lastDayPartes[0];
+        echo "</pre>";
+        
+    }
 }
 ?>

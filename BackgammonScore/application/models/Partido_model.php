@@ -66,5 +66,12 @@ class Partido_model extends CI_Model{
         //return R::convertToBeans( 'toplinie', $resultado );
         return $resultado;
     }
+    
+    public function getLastDay(){
+        //$resultado = R::getRow("SELECT date FROM partido WHERE partido.date = (SELECT MAX(date) FROM partido)");
+        $resultado = R::getRow("SELECT MAX(date) as date FROM partido");
+        
+        return $resultado;
+    }
 }
 ?>
