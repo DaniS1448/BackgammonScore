@@ -57,6 +57,73 @@ class Home extends CI_Controller{
         });
         $data['usuarios']=$usuarios;
         $data['ntop']=1;
+        
+        //////////////////////////////////////////
+        //////////////////////////////////////////
+        //LAST DAY PARTIDOS
+        $lastDay = $this->partido_model->getLastDay()['date'];
+        $lastDayPartes = explode(" ", $lastDay);
+        
+        $lastDayPartidos = $this->partido_model->getLastDayPartidos($lastDayPartes[0]);
+        //$users=$this->user_model->getUsers();
+        
+        $idsUser=[];
+        foreach ($lastDayPartidos as $partido){
+            if (!in_array($partido->jugador1_id, $idsUser))
+            {
+                $idsUser[] = $partido->jugador1_id;
+            }
+            if (!in_array($partido->jugador2_id, $idsUser))
+            {
+                $idsUser[] = $partido->jugador2_id;
+            }
+        }
+        
+        $jugadoresld=[];
+        foreach ($idsUser as $idUser){
+            $jugadoresld[$idUser]["nombre"]=$users[$idUser]->username;
+            $jugadoresld[$idUser]["puntos"]=0;
+            $jugadoresld[$idUser]["partidos"]=0;
+            $jugadoresld[$idUser]["l"]=0;
+            $jugadoresld[$idUser]["lt"]=0;
+            $jugadoresld[$idUser]["m"]=0;
+            $jugadoresld[$idUser]["mt"]=0;
+            
+            foreach ($lastDayPartidos as $partido){
+                if($partido->jugador1_id == $idUser){
+                    $jugadoresld[$idUser]['partidos']++;
+                }
+                if($partido->jugador2_id == $idUser){
+                    $jugadoresld[$idUser]['partidos']++;
+                }
+                
+                if($partido->ganador_id == $idUser){
+                    if($partido->tipo == '0'){
+                        $jugadoresld[$idUser]["puntos"]+=1;
+                        $jugadoresld[$idUser]['l']++;
+                    } elseif ($partido->tipo == '1'){
+                        $jugadoresld[$idUser]["puntos"]+=1;
+                        $jugadoresld[$idUser]['lt']++;
+                    } elseif ($partido->tipo == '2'){
+                        $jugadoresld[$idUser]["puntos"]+=2;
+                        $jugadoresld[$idUser]['m']++;
+                    } elseif ($partido->tipo == '3'){
+                        $jugadoresld[$idUser]["puntos"]+=2;
+                        $jugadoresld[$idUser]['mt']++;
+                    }
+                }
+            }
+        }
+        
+        
+        usort($jugadoresld, function($a, $b) {
+            return $b['puntos'] - $a['puntos'];
+        });
+            
+            $data['ntopday']=1;
+            $data['lastday']=$lastDayPartes[0];
+            $data['jugadoresld']=$jugadoresld;
+        
         frame($this, 'home/index', $data);
     }
     
@@ -264,7 +331,9 @@ class Home extends CI_Controller{
             }
             
             
-            
+            usort($topusuarios, function($a, $b) {
+                return $b['puntos'] - $a['puntos'];
+            });
             $data['topusuarios']=$topusuarios;
             frame($this, 'home/duel', $data);
         }else {
@@ -273,15 +342,7 @@ class Home extends CI_Controller{
     }
     
     public function test(){
-        session_start_seguro();
-        $this->load->model('partido_model');
-        $lastDay = $this->partido_model->getLastDay()['date'];
-        $lastDayPartes = explode(" ", $lastDay);
-        
-        echo "<pre>";
-        echo $lastDayPartes[0];
-        echo "</pre>";
-        
+        echo phpinfo();
     }
 }
 ?>

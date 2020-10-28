@@ -2,7 +2,43 @@
 		<br>
 		<div class="container">
 		
-			<div class="d-flex justify-content-center mb-4">
+			<div class="row d-fex justify-content-center">
+				<div class="col-12 table-responsive">
+					<h3 class="text-center bg-primary text-white m-0 p-2 rounded">Último día <?= $lastday; ?></h3>
+					
+					<table class="table table-sm table-primary table-striped rounded" id="toplinie">
+                		<thead>
+                    		<tr>
+                    			<th scope="col">#</th>
+                    			<th scope="col">Jugador</th>
+                    			<th scope="col">Puntos</th>
+                    			<th scope="col">Partidos</th>
+                    			<th scope="col">Linie</th>
+                    			<th scope="col">Marti</th>
+                    			<th scope="col">MartiT</th>
+                    			<th scope="col">LinieT</th>
+                    		</tr>
+                		</thead>
+                		<tbody>
+                			<?php foreach ($jugadoresld as $usuario):?>
+                				<tr>
+                					<td><?= $ntopday++ ?></td>
+                					<td><?= $usuario['nombre']?></td>
+									<td><?= $usuario['puntos'] ?></td>
+									<td><?= $usuario['partidos'] ?></td>
+									<td><?= $usuario['l'] ?></td>
+									<td><?= $usuario['m'] ?></td>
+									<td><?= $usuario['mt'] ?></td>
+									<td><?= $usuario['lt'] ?></td>
+                				</tr>
+                			<?php endforeach;?>
+                		</tbody>
+            		</table>
+				</div>
+			
+			</div>
+		
+			<div class="d-flex justify-content-center my-4">
     			<form action="<?php echo base_url(); ?>home/duel" method="get">
         		<div class="form-row">
         			<div class="form-group col-auto">

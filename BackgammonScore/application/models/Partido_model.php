@@ -73,5 +73,12 @@ class Partido_model extends CI_Model{
         
         return $resultado;
     }
+    
+    public function getLastDayPartidos($lastday){
+        //$rows = R::getAll( 'SELECT * FROM `partido` WHERE date like "2020-10-22%"');
+        $rows = R::getAll( 'SELECT * FROM `partido` WHERE date like "'.$lastday.'%"');
+        
+        return R::convertToBeans( 'partido', $rows );
+    }
 }
 ?>
