@@ -4,7 +4,7 @@
 		
 			<div class="row d-fex justify-content-center">
 				<div class="col-12 table-responsive">
-					<h3 class="text-center bg-primary text-white m-0 p-2 rounded">Último día <?= $lastday; ?></h3>
+					<h3 class="text-center bg-primary text-white m-0 p-2 rounded">Último día - <?= date("d M Y", strtotime($lastday)); ?></h3>
 					
 					<table class="table table-sm table-primary table-striped rounded" id="toplinie">
                 		<thead>

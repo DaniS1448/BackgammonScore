@@ -342,7 +342,24 @@ class Home extends CI_Controller{
     }
     
     public function test(){
-        echo phpinfo();
+        session_start_seguro();
+        $this->load->model('partido_model');
+        $this->load->model('user_model');
+        $partidos = $this->partido_model->getPartidos();
+        
+        $years=[];
+        foreach ($partidos as $partido){
+            $datePartes = explode(" ", $partido->date);
+            $fechaPartes = explode("-", $datePartes);
+            $year=$fechaPartes[0];
+            $month=$fechaPartes[1];
+            
+            if (!in_array($year, $years))
+            {
+                $years[] = $year;
+            }
+        }
+        
     }
 }
 ?>
